@@ -7,11 +7,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+<<<<<<< HEAD
 import web.Service.CarService;
+=======
+import web.DAO.CarDAO;
+>>>>>>> origin/main
 
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
+<<<<<<< HEAD
     private final CarService carService;
 
     @Autowired
@@ -22,6 +27,17 @@ public class CarsController {
     @GetMapping
     public String countCars (Model model, @RequestParam(value = "count", defaultValue = "5") int count) {
         model.addAttribute("cars", carService.showCountCars(count));
+=======
+    private final CarDAO carDAO;
+    @Autowired
+    public CarsController(CarDAO carDAO) {
+        this.carDAO = carDAO;
+    }
+
+    @GetMapping()
+    public String countCars (Model model, @RequestParam(value = "count", defaultValue = "5") int count) {
+        model.addAttribute("cars", carDAO.showCountCars(count));
+>>>>>>> origin/main
         return "cars/index";
     }
 }
