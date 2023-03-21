@@ -1,13 +1,13 @@
-package web.DAO;
+package web.Service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import web.model.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class CarDAO {
+
+@Service
+public class CarServiceImpl implements CarService {
     private static int CAR_COUNT;
     private List<Car> allCars;
     {
@@ -18,8 +18,8 @@ public class CarDAO {
         allCars.add(new Car(++CAR_COUNT, "Audi", "A4", "B9"));
         allCars.add(new Car(++CAR_COUNT, "Audi", "RS4", "B9"));
     }
-
-    public List<Car> showCountCars(int count) {
+    @Override
+    public List<Car> showCountCar(int count) {
         if(count > 0 && count < 5) {
             return allCars.stream().limit(count).toList();
         } else {
